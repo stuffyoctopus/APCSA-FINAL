@@ -1,4 +1,4 @@
-//var qq = random
+//var qq = randoms
 float qx = 300;
 float qy = 300;
 int size = 35; 
