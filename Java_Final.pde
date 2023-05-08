@@ -23,7 +23,7 @@ void draw() {
   //text('Decrease',0, 40)
   //circle
   fill(red1,blue1,green1);
-  strokeWeight(2);
+  strokeWeight(1);
   stroke(0,0,0);
   ellipse(qx, qy, size,size);
   //horizontal
