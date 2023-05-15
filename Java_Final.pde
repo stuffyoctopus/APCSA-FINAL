@@ -11,7 +11,6 @@ boolean start = true;
 void setup() {
   size(600, 600);
   rectMode(CENTER);
-  textMode(CENTER);
   noCursor();
   
 }
@@ -21,6 +20,7 @@ void draw() {
 
 //if the start button is pressed, then begin the game
 if (start){
+  rect(250, 220, 100,1);
   textSize(100);
  text("start", startX-100,startY);
  fill(0,0,0);
