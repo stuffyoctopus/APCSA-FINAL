@@ -5,7 +5,7 @@ void mousePressed() {
   if (mode.equals("game")) {
     if  (targetDistance < targetSize/2) {
       startX = random(100, 500);
-      startY = random(100, 500);
+      startY = random(120, 500);
       red = 255;
       blue = 255;
       green = 255;
