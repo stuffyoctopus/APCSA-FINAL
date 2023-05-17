@@ -4,10 +4,14 @@ int targetSize = 35;
 int red = 255;
 int blue = 255;
 int green = 255;
-boolean start = true;
+String mode = "mainMenu";
 int count = 0;
+int highScore = 0;
 float textWidth = 271.89972;
 float startLeft = 164.05014;
+int hoverWhite = 255;
+int misses = 0;
+
 
 void setup() {
   size(600, 600);
@@ -17,21 +21,29 @@ void draw() {
   //Background color
   background(100, 100, 100);
 
-  //If the start button is pressed, then begin the game
-  if (start) {
-    
+
+
+  //If the start button is not pressed, show the main menu
+  if (mode.equals("mainMenu")) {
+
+    //If your mouse hovers over the start button, darken the color of the butto(white -> gray)
+    if (mouseX > startLeft && mouseX < textWidth + startLeft && mouseY < 310 && mouseY > 220) {
+      hoverWhite=200;
+    } else {
+      hoverWhite=255;
+    }
     //Box around the start
     rectMode(CORNER);
-    
+
     //White background
-    fill(255, 255, 255);
+    fill(hoverWhite, hoverWhite, hoverWhite);
     rect(startLeft, 220, textWidth, 90);
     fill(0, 0, 0);
-    
+
     //Top and Bottom
     rect(startLeft, 220, textWidth, 3);
     rect(startLeft, 310, textWidth+3, 3);
-    
+
     //Left and Right
     rect(startLeft, 220, 3, 90);
     rect(startLeft+textWidth, 220, 3, 90);
@@ -41,9 +53,10 @@ void draw() {
     //The text "START"
     textSize(100);
     text("START", startLeft, 300);
-
     
-  } else {
+    //When the mode is game
+  } else if (mode.equals("game")) {
+    //If the button is pressed and the mode is game, begin the game.
     noCursor();
 
     //circle
@@ -52,43 +65,33 @@ void draw() {
     stroke(0, 0, 0);
     ellipse(startX, startY, targetSize, targetSize);
 
+    //Score and high score color
+    fill(255, 255, 255);
+
+    //current score
+    textSize(30);
+    text("Current Score: " + count, 5, 30);
+
+    //high score
+    textSize(30);
+    text("High Score: " + highScore, 5, 60);
+
+    //misses
+    textSize(30);
+    text("Misses: " + misses, 5, 90);
+
 
     //crosshair
     fill(0, 0, 0);
     rect(mouseX, mouseY, 40, 2);
     rect(mouseX, mouseY, 2, 40);
-  }
-}
-
-
-
-void mousePressed() {
-  float targetDistance = dist(startX, startY, mouseX, mouseY);
-  print(count);
-
-
-  //If you press the start button it begins the game by making the variable start false.
-  if (mouseX > startLeft && mouseX < textWidth && mouseY < 310 && mouseY > 220) {
-    start=false;
-  }
-
-  //If you click on the circle in moves positions
-  if  (targetDistance < targetSize/2) {
-    startX = random(100, 500);
-    startY = random(100, 500);
-    red = 255;
-    blue = 255;
-    green = 255;
-    count++;
-  } else {
-    //Change the target to red if mouse is clicked outside the box (and then make a new circle .5 seconds later.)
-    red = 255;
-    blue = 0;
-    green = 0;
-    /*delay(1000);
-     blue = 255;
-     green = 255;
-     startX = random(100, 500);
-     startY = random(100, 500);*/
+    
+  //If you press ESC, show the pause menu
+  } else if (mode.equals("pause")) {
+    background(100, 100, 100);  
+    //bring back the cursor
+    cursor();
+    
+    
   }
 }
