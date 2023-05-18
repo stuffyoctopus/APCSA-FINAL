@@ -20,41 +20,31 @@ void setup() {
 void draw() {
   //Background color
   background(100, 100, 100);
-
+println(millis()/1000);
   //If the start button is not pressed, show the main menu
   if (mode.equals("mainMenu")) {
 
+    
     //If your mouse hovers over the start button, darken the color of the butto(white -> gray)
     if (mouseX > startLeft && mouseX < textWidth + startLeft && mouseY < 310 && mouseY > 220) {
       hoverWhite=200;
     } else {
       hoverWhite=255;
     }
-    //Box around the start
-    rectMode(CORNER);
 
-    //White background
+    textSize(100);
     fill(hoverWhite, hoverWhite, hoverWhite);
-    rect(startLeft, 220, textWidth, 90);
-    fill(0, 0, 0);
-
-    //Top and Bottom
-    rect(startLeft, 220, textWidth, 3);
-    rect(startLeft, 310, textWidth+3, 3);
-
-    //Left and Right
-    rect(startLeft, 220, 3, 90);
-    rect(startLeft+textWidth, 220, 3, 90);
-
-    rectMode(CENTER);
+    rect(textWidth("START")/2+startLeft, 265, textWidth("START")+5, 100);
 
     //The text "START"
-    textSize(100);
-    text("START", startLeft, 300);
-    
+    fill(0, 0, 0);
+    text("START", 300-textWidth("START")/2, 300);
+
+   println(textAscent() + textDescent());
+
     textSize(20);
-    text("Current High Score: " + highScore,300-(textWidth("Current High Score: " + highScore)/2),350);
-    
+    text("Current High Score: " + highScore, 300-(textWidth("Current High Score: " + highScore)/2), 350);
+
     //When the mode is game
   } else if (mode.equals("game")) {
     //If the button is pressed and the mode is game, begin the game.
@@ -86,15 +76,15 @@ void draw() {
     fill(0, 0, 0);
     rect(mouseX, mouseY, 40, 2);
     rect(mouseX, mouseY, 2, 40);
-    
-  //If you press ESC, show the pause menu
+
+    //If you press ESC, show the pause menu
   } else if (mode.equals("pause")) {
-    background(100, 100, 100);  
+    background(100, 100, 100);
     //bring back the cursor
     cursor();
-    
+
     //make the text white
-    fill(255,255,255);
+    fill(255, 255, 255);
     //current score
     textSize(30);
     text("Current Score: " + count, 300-(textWidth("Current Score: 2")/2), 30);
@@ -107,7 +97,7 @@ void draw() {
     textSize(30);
     text("Misses: " + misses, 300-(textWidth("Misses: 2")/2), 90);
 
-//If your mouse hovers over the start button, darken the color of the butto(white -> gray)
+    //If your mouse hovers over the start button, darken the color of the butto(white -> gray)
     if (mouseX > startLeft && mouseX < textWidth + startLeft && mouseY < 310 && mouseY > 220) {
       hoverWhite=200;
     } else {
@@ -123,22 +113,16 @@ void draw() {
 
     //White background
     fill(hoverWhite, hoverWhite, hoverWhite);
-    rect(startLeft, 220, textWidth, 90);
+    rect(startLeft, 220, textWidth, 64);
     fill(0, 0, 0);
     textSize(100);
 
-    //Top and Bottom
-    rect(startLeft, 220, textWidth, 3);
-    rect(startLeft, 310, textWidth+3, 3);
 
-    //Left and Right
-    rect((textWidth("RESUME")/2), 220, 3, 90);
-    rect(startLeft+textWidth, 220, 3, 90);
 
     rectMode(CENTER);
 
     //The text "START"
-    textSize(100);
-    text("RESUME", startLeft, 300);
+    textSize(50);
+    text("RESUME", 300-textWidth("RESUME")/2, 300);
   }
 }
