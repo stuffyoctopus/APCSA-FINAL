@@ -29,7 +29,7 @@ void mousePressed() {
     }
   }
   //If you press the start button it begins the game by making the variable start false.
-  if (mouseX > startLeft && mouseX < textWidth + startLeft && mouseY < 310 && mouseY > 220) {
+  if ((mouseX > 300-(textWidth("START")+10)/2 && mouseX < 300+(textWidth("START")+10)/2 && mouseY < 315 && mouseY > 215) || ((mouseX > 300-(textWidth("RESUME")+10)/2 && mouseX < 300+(textWidth("RESUME")+10)/2 && mouseY < 210 && mouseY > 150))&& mode.equals("pause")) {
     mode="game";
   }
 }
