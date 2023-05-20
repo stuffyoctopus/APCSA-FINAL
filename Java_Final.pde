@@ -55,6 +55,7 @@ void draw() {
   //If you miss three times you go to game over page.
   else if (mode.equals("game")) {
     //If the button is pressed and the mode is game, begin the game.
+
     textAlign(CORNER);
     noCursor();
     println(frameRate/60);
@@ -160,16 +161,16 @@ void draw() {
     textSize(20);
     text("High Score: " + highScore, 300, 240);
 
-//If your mouse hovers over the resume button, darken the color of the button(white -> gray)
-        textSize(50);
+    //If your mouse hovers over the resume button, darken the color of the button(white -> gray)
+    textSize(50);
     if (mouseX > 300-(textWidth("PLAY AGAIN")+10)/2 && mouseX <300+(textWidth("PLAY AGAIN")+10)/2 && mouseY < 344 && mouseY > 280) {
       hoverWhite=200;
     } else {
       hoverWhite=255;
     }
-    
+
     //Play again background
-        textSize(50);
+    textSize(50);
     fill(hoverWhite, hoverWhite, hoverWhite);
     rect(300, 312, textWidth("PLAY AGAIN")+10, 64);
     //Play again background
@@ -178,8 +179,8 @@ void draw() {
 
 
 
-//If your mouse hovers over the quit button, darken the color of the button(white -> gray)
-        textSize(50);
+    //If your mouse hovers over the quit button, darken the color of the button(white -> gray)
+    textSize(50);
     if (mouseX > 300-(textWidth("QUIT")+10)/2 && mouseX <300+(textWidth("QUIT")+10)/2 && mouseY < 434 && mouseY > 370) {
       hoverWhiteQuit=200;
     } else {
