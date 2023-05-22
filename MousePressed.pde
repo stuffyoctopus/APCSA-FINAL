@@ -3,22 +3,23 @@ void mousePressed() {
 
 
 
-
-
-
-
   if (mode.equals("pause")) {
+          tempSeconds=secondsRemaining;
     if (mouseX > 300-(textWidth("RESUME")+10)/2 && mouseX <300+(textWidth("RESUME")+10)/2 && mouseY < 314 && mouseY > 250) {
       mode="game";
       modeTemp="tempOn";
+      secondsMode="on";
+      secondsRemaining=tempSeconds-seconds;
     }
     if (mouseX > 300-(textWidth("QUIT")+10)/2 && mouseX <300+(textWidth("QUIT")+10)/2 && mouseY < 414 && mouseY > 350) {
       mode="mainMenu";
     }
   }
 
+
   if (mode.equals("gameOver")) {
     if (mouseX > 300-(textWidth("PLAY AGAIN")+10)/2 && mouseX <300+(textWidth("PLAY AGAIN")+10)/2 && mouseY < 344 && mouseY > 280) {
+            startSeconds = millis()/1000;
       mode="game";
       modeTemp="tempOn";
       count=0;
@@ -30,10 +31,12 @@ void mousePressed() {
       green = 255;
     }
     if (mouseX > 300-(textWidth("QUIT")+10)/2 && mouseX <300+(textWidth("QUIT")+10)/2 && mouseY < 434 && mouseY > 370) {
+            startSeconds = millis()/1000;
       mode="mainMenu";
     }
   }
-  //If you click on the circle in moves positions only if it is in game mode
+
+
   if (mode.equals("game")) {
     if  (targetDistance < targetSize/2) {
       startX = random(100, 500);
@@ -64,8 +67,8 @@ void mousePressed() {
       count = 0;
       println(count);
     }
-  }
 
+  }
 
 
   if (mode.equals("mainMenu")) {
@@ -74,12 +77,14 @@ void mousePressed() {
     if (mouseX > 300-(textWidth("START")+10)/2 && mouseX <300+(textWidth("START")+10)/2 && mouseY < 315 && mouseY > 215) {
       mode="game";
       modeTemp="tempOn";
-           red = 255;
+      red = 255;
       blue = 255;
       green = 255;
-            startX = random(100, 500);
+      startX = random(100, 500);
       startY = random(120, 500);
+      startSeconds = millis()/1000;
     }
   }
+
   modeTemp="tempOff";
 }

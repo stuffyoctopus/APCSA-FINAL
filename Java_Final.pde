@@ -14,8 +14,11 @@ int tempHighscore = 0;
 //float startLeft = 164.05014;
 int hoverWhite = 255;
 int hoverWhiteQuit = 255;
-int secondsLeft = 15;
-int seconds = 0;
+int secondsRemaining;
+int startSeconds;
+int seconds;
+int tempSeconds;
+String secondsMode="off";
 
 
 void setup() {
@@ -56,9 +59,11 @@ void draw() {
   ///////////////////////////////////////////////////////GAME///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //If you miss three times you go to game over page.
   else if (mode.equals("game")) {
-    //If the button is pressed and the mode is game, begin the game.
 
-
+    if(secondsMode.equals("off")){
+seconds = ((millis()/1000)-startSeconds);
+ secondsRemaining = 15-seconds;
+}
     textAlign(CORNER);
     noCursor();
 
@@ -85,12 +90,15 @@ void draw() {
 
     textAlign(RIGHT);
     textSize(30);
-    //text("Time Remaining: " + seconds, 595, 30);
+    text("Time Remaining: " + (secondsRemaining), 595, 30);
 
     //crosshair
     fill(0, 0, 0);
     rect(mouseX, mouseY, 40, 2);
     rect(mouseX, mouseY, 2, 40);
+    if(secondsRemaining<=0){
+      mode="gameOver";
+    }
   }
   ///////////////////////////////////////////////////////PAUSE///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   else if (mode.equals("pause")) {
