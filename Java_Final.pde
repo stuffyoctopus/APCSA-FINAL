@@ -5,6 +5,7 @@ int red = 255;
 int blue = 255;
 int green = 255;
 String mode = "mainMenu";
+String modeTemp = "";
 int count = 0;
 int misses = 0;
 int highScore = 0;
@@ -15,6 +16,7 @@ int hoverWhite = 255;
 int hoverWhiteQuit = 255;
 int secondsLeft = 15;
 int seconds = 0;
+
 
 void setup() {
   size(600, 600);
@@ -56,9 +58,9 @@ void draw() {
   else if (mode.equals("game")) {
     //If the button is pressed and the mode is game, begin the game.
 
+
     textAlign(CORNER);
     noCursor();
-    println(frameRate/60);
 
     //circle
     fill(red, blue, green);
@@ -83,7 +85,7 @@ void draw() {
 
     textAlign(RIGHT);
     textSize(30);
-    text("Time Remaining: " + seconds, 595, 30);
+    //text("Time Remaining: " + seconds, 595, 30);
 
     //crosshair
     fill(0, 0, 0);
