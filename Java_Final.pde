@@ -18,7 +18,7 @@ int seconds;
 int tempSeconds;
 String secondsMode="off";
 
-
+ 
 void setup() {
   size(600, 600);
   rectMode(CENTER);
