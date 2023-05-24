@@ -4,7 +4,7 @@ void mousePressed() {
 
 
   if (mode.equals("pause")) {
-          tempSeconds=secondsRemaining;
+          tempSeconds=seconds;
     if (mouseX > 300-(textWidth("RESUME")+10)/2 && mouseX <300+(textWidth("RESUME")+10)/2 && mouseY < 314 && mouseY > 250) {
       mode="game";
       modeTemp="tempOn";
